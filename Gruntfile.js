@@ -40,6 +40,11 @@ module.exports = function(grunt){
 				files: {
 					"dist/tags.js": ["src/tags.js"]
 				}
+			},
+			css: {
+				files: {
+					"dist/style.css": ["src/style.css"]
+				}
 			}
 		},
 
