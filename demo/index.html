@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>Tags.js Demo</title>
+
+	<link rel="stylesheet" href="../src/style.css">
+	<style>
+	#container {
+		width: 800px;
+		margin: 2em auto;
+		color: #222;
+	}
+	#tags {
+		font-size: 1em;
+		padding: .3em .6em;
+		border: 1px solid #ccc;
+		border-radius: 3px;
+	}
+	hr {
+		margin: 2em 0;
+	}
+	#result {
+		font-size: 0.8em;
+	}
+	</style>
+</head>
+<body>
+
+	<div id="container">
+		<h1>
+			Tags.js Demo
+		</h1>
+		<form id="form">
+			<input type="text" id="tags" name="tags" placeholder="INPUT TAG">
+			<input type="submit" value="Get Result">
+		</form>
+		<hr>
+		<div id="result"></div>
+	</div>
+
+
+	<script src="../bower_components/jquery/dist/jquery.js"></script>
+	<script src="../src/tags.js"></script>
+	<script>
+
+	$("#tags").tags({
+		tags: "foo, bar, baz",
+		suggests: [
+			"Google Chrome",
+			"Mozilla Firefox",
+			"Microsoft Internet Explorer",
+			"Safari",
+			"Opera"
+		]
+	});
+
+	$("#form").on("submit", function(e){
+		e.preventDefault();
+		var result = JSON.stringify($(this).serializeArray());
+		$("#result").html(result);
+	});
+
+	</script>
+	
+</body>
+</html>

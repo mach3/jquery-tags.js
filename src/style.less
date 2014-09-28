@@ -1,0 +1,51 @@
+
+.js-tags-suggest {
+	border: 1px solid #ccc;
+	background-color: #fff;
+	font-size: 0.8em;
+	min-width: 16em;
+}
+
+.js-tags-suggest-item {
+	padding: .3em;
+	border-top: 1px solid #ccc;
+
+	&:first-child {
+		border-top: none;
+	}
+	&:hover, &.selected {
+		background-color: #ddd;
+	}
+}
+
+.js-tags-list {
+	margin: 0;
+	padding: 1em 0;
+	list-style-type: none;
+	font-size: 0.8em;
+	line-height: 2em;
+
+	li {
+		display: inline-block;
+		margin-right: 1em;
+	}
+	.js-tags-label {
+		margin-right: .5em;
+	}
+
+	.js-tags-button-remove {
+		border-radius: 100%;
+		border: none;
+		background-color: #999;
+		color: #fff;
+		cursor: pointer;
+		width: 1.6em;
+		height: 1.6em;
+		padding: 0;
+
+		&:hover {
+			background-color: #666;
+		}
+	}
+
+}
