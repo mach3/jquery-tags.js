@@ -3,7 +3,7 @@
  * -------
  * User interface to input tags
  *
- * @version 0.1.0 (2014-09-30)
+ * @version 0.1.1 (2014-09-30)
  * @author mach3 <http://github.com/mach3>
  * @license MIT
  */
