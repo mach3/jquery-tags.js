@@ -141,26 +141,29 @@
 		 * @param {String} name
 		 */
 		api.add = function(name){
-			var o = this.options;
+			var o, my;
 
-			name = $.trim(name);
+			o = this.options;
+			my = this;
 
-			if(! name || $.inArray(name, this.tags) >= 0){
-				return;
-			}
-
-			this.tags.push(name);
-			this.nodeHidden.val(this.tags.join(o.delimiter))
-			$("<li>").append(
-				$("<span>")
-				.addClass(o.classLabel)
-				.text(name),
-				$("<button>")
-				.addClass(o.classRemove)
-				.html("&times;")
-			)
-			.data("value", name)
-			.appendTo(this.nodeTags);
+			$.each(name.split(o.delimiter), function(i, tag){
+				tag = $.trim(tag);
+				if(! tag || $.inArray(tag, my.tags) >= 0){
+					return;
+				}
+				my.tags.push(tag);
+				my.nodeHidden.val(my.tags.join(o.delimiter))
+				$("<li>").append(
+					$("<span>")
+					.addClass(o.classLabel)
+					.text(tag),
+					$("<button>")
+					.addClass(o.classRemove)
+					.html("&times;")
+				)
+				.data("value", tag)
+				.appendTo(my.nodeTags);
+			});
 		};
 
 		/**
@@ -292,6 +295,7 @@
 						e.preventDefault();
 						return this.toggleSuggest(! e.shiftKey);
 					}
+					break;
 				case 13: // enter
 					e.preventDefault();
 					if(this.suggesting){
@@ -330,9 +334,11 @@
 		 */
 		api.onBlur = function(e){
 			var my = this;
-			setTimeout(function(){
-				my.suggest(false);
-			}, 100);
+			if(this.suggesting){
+				setTimeout(function(){
+					my.suggest(false);
+				}, 100);
+			}
 		};
 
 		/**
@@ -364,6 +370,7 @@
 				this._tagsInstance = new Tags(this, options);
 			}
 		});
+		return this;
 	};
 
 }(jQuery));
